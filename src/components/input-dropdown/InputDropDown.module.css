@@ -18,6 +18,7 @@
 .input-dropdown {
     margin-left: 0.5rem;
     border: 0;
+    padding: 0;
     width: 95%;
     height: 100%;
     font-style: italic;
