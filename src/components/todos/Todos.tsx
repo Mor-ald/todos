@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import { Todo } from "../../ts/Todo.ts";
 import InitialTodosData from "./InitialTodosData.ts";
 import { CurrentTodosDisplay } from "../../ts/CurrentTodosDisplay.ts";
+import InputDropDown from "../input-dropdown/InputDropDown.tsx";
 
 /**
  * Todos component
@@ -65,10 +66,16 @@ export default function Todos() {
 		setFilterFeature(display === "Active" || display === "Completed");
 	}, []);
 
+	const onToggleVisibleDropDown = useCallback(() => {
+		setVisibleDropDown(!visibleDropDown);
+	}, [visibleDropDown]);
+
 	return (
 		<div className={styles["todos-container"]}>
 			<div className={styles["todos-header"]}>todos</div>
-			<div className={styles["todos-content"]}></div>
+			<div className={styles["todos-content"]}>
+				<InputDropDown visibleDropDown={visibleDropDown} addTodo={addTodo} onToggleVisibleDropDown={onToggleVisibleDropDown} />
+			</div>
 		</div>
 	);
 }
