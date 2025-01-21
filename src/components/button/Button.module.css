@@ -1,0 +1,17 @@
+.button,
+.button-active {
+    margin: 0 0.1rem;
+    border: 1px solid white;
+    border-radius: 0.25rem;
+    padding: 0.2rem 0.3rem;
+    transition: 0.2s all ease;
+    cursor: pointer;
+}
+
+.button-active {
+    border: 1px solid #eadbda;
+}
+
+.button:hover {
+    border: 1px solid #eadbda;
+}
