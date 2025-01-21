@@ -1,7 +1,11 @@
-import "./App.css";
+import Todos from "./components/todos/Todos.tsx";
 
 const App = () => {
-	return <></>;
+	return (
+		<>
+			<Todos />
+		</>
+	);
 };
 
 export default App;
