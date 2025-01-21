@@ -65,7 +65,7 @@ export default function Todos() {
 			<div className={styles["todos-header"]}>todos</div>
 			<div className={styles["todos-content"]}>
 				<InputDropDown visibleDropDown={visibleDropDown} addTodo={addTodo} onToggleVisibleDropDown={onToggleVisibleDropDown} />
-				<TodoList todos={curTodos} completeTodo={completeTodo} />
+				<TodoList visible={visibleDropDown} todos={curTodos} completeTodo={completeTodo} />
 			</div>
 		</div>
 	);
