@@ -15,7 +15,7 @@ const InitialTodosData: Todo[] = [
 		completed: true,
 	},
 	{
-		id: 1,
+		id: 3,
 		text: "Покрытие тестами",
 		completed: false,
 	},
