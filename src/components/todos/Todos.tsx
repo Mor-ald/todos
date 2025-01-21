@@ -58,6 +58,9 @@ export default function Todos() {
 		return setTodos(todos.filter((todo) => !todo.completed));
 	}, [todos]);
 
+	/**
+	 * Toggle visible of dropdown
+	 */
 	const onToggleVisibleDropDown = useCallback(() => {
 		setVisibleDropDown(!visibleDropDown);
 	}, [visibleDropDown]);
