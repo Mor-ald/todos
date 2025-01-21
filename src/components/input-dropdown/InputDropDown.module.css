@@ -24,6 +24,7 @@
     font-style: italic;
     font-size: 16px;
     color: #e8e8e8;
+    user-select: none;
 }
 
 .input-dropdown::placeholder {
