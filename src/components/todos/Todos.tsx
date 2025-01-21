@@ -1,18 +1,30 @@
 import styles from "./Todos.module.css";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Todo } from "../../ts/Todo.ts";
 import InitialTodosData from "./InitialTodosData.ts";
 import { CurrentTodosDisplay } from "../../ts/CurrentTodosDisplay.ts";
 import InputDropDown from "../input-dropdown/InputDropDown.tsx";
+import TodoList from "../todo-list/TodoList.tsx";
 
 /**
  * Todos component
  */
 export default function Todos() {
 	const [todos, setTodos] = useState<Todo[]>(InitialTodosData);
+	const [curTodos, setCurTodos] = useState<Todo[]>([]);
 	const [visibleDropDown, setVisibleDropDown] = useState<boolean>(true);
-	const [currentTodosDisplay, setCurrentTodosDisplay] = useState<CurrentTodosDisplay>("All");
-	const [filterFeature, setFilterFeature] = useState<boolean>(false);
+	const [currentDisplayTodoType, setCurrentDisplayTodoType] = useState<CurrentTodosDisplay>("All");
+
+	useEffect(() => {
+		switch (currentDisplayTodoType) {
+			case "Active":
+				return setCurTodos(todos.filter((todo) => !todo.completed));
+			case "Completed":
+				return setCurTodos(todos.filter((todo) => todo.completed));
+			default:
+				return setCurTodos(todos);
+		}
+	}, [currentDisplayTodoType, todos]);
 
 	/**
 	 * Add new todo in todos
@@ -44,28 +56,6 @@ export default function Todos() {
 		return setTodos(todos.filter((todo) => !todo.completed));
 	}, [todos]);
 
-	/**
-	 * Filter todos (all/active/completed)
-	 */
-	const filterTodos = useCallback(() => {
-		switch (currentTodosDisplay) {
-			case "Active":
-				return todos.filter((todo) => !todo.completed);
-			case "Completed":
-				return todos.filter((todo) => todo.completed);
-			default:
-				return todos;
-		}
-	}, [currentTodosDisplay, todos]);
-
-	/**
-	 * Switch filter type by button
-	 */
-	const onSwitchFilterType = useCallback((display: CurrentTodosDisplay) => {
-		setCurrentTodosDisplay(display);
-		setFilterFeature(display === "Active" || display === "Completed");
-	}, []);
-
 	const onToggleVisibleDropDown = useCallback(() => {
 		setVisibleDropDown(!visibleDropDown);
 	}, [visibleDropDown]);
@@ -75,6 +65,7 @@ export default function Todos() {
 			<div className={styles["todos-header"]}>todos</div>
 			<div className={styles["todos-content"]}>
 				<InputDropDown visibleDropDown={visibleDropDown} addTodo={addTodo} onToggleVisibleDropDown={onToggleVisibleDropDown} />
+				<TodoList todos={curTodos} completeTodo={completeTodo} />
 			</div>
 		</div>
 	);
