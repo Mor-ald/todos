@@ -1,0 +1,16 @@
+.todos-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 530px;
+}
+
+.todos-header {
+    align-items: center;
+    margin-bottom: 1rem;
+    font-weight: 100;
+    font-size: 80px;
+    color: #eadbda;
+    user-select: none;
+}
