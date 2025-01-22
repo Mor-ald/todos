@@ -27,11 +27,11 @@ export default function InputDropDown({ visibleDropDown, addTodo, onToggleVisibl
 	 */
 	const Arrow = useCallback(() => {
 		return visibleDropDown ? (
-			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<svg data-testid="arrow-element-down" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M7 10L12 15L17 10" stroke="#E9E9E9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 			</svg>
 		) : (
-			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<svg data-testid="arrow-element-up" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M7 14L12 9L17 14" stroke="#E9E9E9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 			</svg>
 		);
@@ -39,7 +39,7 @@ export default function InputDropDown({ visibleDropDown, addTodo, onToggleVisibl
 
 	return (
 		<div className={styles["input-dropdown-container"]}>
-			<div className={styles["input-dropdown-arrow"]} onClick={onToggleVisibleDropDown}>
+			<div className={styles["input-dropdown-arrow"]} data-testid="arrow-element" onClick={onToggleVisibleDropDown}>
 				<Arrow />
 			</div>
 			<div>

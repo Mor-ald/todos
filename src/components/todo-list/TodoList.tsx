@@ -7,7 +7,7 @@ import TodoItem from "../todo-item/TodoItem.tsx";
  */
 export default function TodoList({ visible, todos, completeTodo }: ITodoList) {
 	return (
-		<ul className={styles["todo-list"]} hidden={!visible}>
+		<ul className={styles["todo-list"]} hidden={!visible} data-testid="todo-list">
 			{todos.map((todo) => (
 				<TodoItem key={todo.id} todo={todo} completeTodo={completeTodo} />
 			))}
