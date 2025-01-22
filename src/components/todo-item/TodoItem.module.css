@@ -24,7 +24,7 @@
     position: absolute;
     width: 0;
     height: 0;
-    background-image: url("public/check.svg");
+    background-image: url("../../assets/check.svg");
     background-repeat: no-repeat;
     transition: 500ms;
 }
